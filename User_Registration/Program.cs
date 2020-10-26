@@ -50,6 +50,18 @@ namespace User_Registration
             {
                 Console.WriteLine("Valid Email ID \n");
             }
+
+            //Validate Mobile Number using Regex Pattern
+            Console.WriteLine("Enter Mobile Number:");
+            string mobileNumber = Console.ReadLine();
+            if (!Regex.Match(mobileNumber, "^[0-9]{2} [0-9]{10}" ).Success)
+            {
+                Console.WriteLine("Invalid Mobile Number \n");
+            }
+            else
+            {
+                Console.WriteLine("Valid Mobile Number \n");
+            }
         }
     }
 }
