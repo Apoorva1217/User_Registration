@@ -67,8 +67,8 @@ namespace User_Registration
             Console.WriteLine("Enter Password:");
             string password = Console.ReadLine();
 
-            //Rule 1-> minimum 8 characters
-            if (!Regex.Match(password, "^[A-Za-z0-9]{8,}$" ).Success)
+            //Rule 2-> should have atleast one upper case
+            if (!Regex.Match(password, "^(?=.*[A-Z].*)[A-Za-z0-9]{8,}" ).Success)
             {
                 Console.WriteLine("Invalid Password \n");
             }
