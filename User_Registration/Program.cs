@@ -20,11 +20,11 @@ namespace User_Registration
             string firstName = Console.ReadLine();
             if(!Regex.Match(firstName, "^[A-Z][a-z]{2,}$" ).Success)
             {
-                Console.WriteLine("Invalid First Name");
+                Console.WriteLine("Invalid First Name \n");
             }
             else
             {
-                Console.WriteLine("Valid First Name");
+                Console.WriteLine("Valid First Name \n");
             }
 
             //Validate Last Name using Regex Pattern
@@ -32,11 +32,23 @@ namespace User_Registration
             string lastName = Console.ReadLine();
             if (!Regex.Match(lastName, "^[A-Z][a-z]{2,}$" ).Success)
             {
-                Console.WriteLine("Invalid Last Name");
+                Console.WriteLine("Invalid Last Name \n");
             }
             else
             {
-                Console.WriteLine("Valid Last Name");
+                Console.WriteLine("Valid Last Name \n");
+            }
+
+            //Validate Email ID using Regex Pattern
+            Console.WriteLine("Enter Email ID:");
+            string emailID = Console.ReadLine();
+            if (!Regex.Match(emailID, "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2})*$" ).Success)
+            {
+                Console.WriteLine("Invalid Email ID \n");
+            }
+            else
+            {
+                Console.WriteLine("Valid Email ID \n");
             }
         }
     }
