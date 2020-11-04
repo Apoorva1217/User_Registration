@@ -44,5 +44,24 @@ namespace User_Registration
                 return true;
             }
         }
+
+        /// <summary>
+        /// Validate Email ID
+        /// </summary>
+        /// <param name="emailID"></param>
+        /// <returns></returns>
+        public bool ValidateemailID(string emailID)
+        {
+            if (!Regex.Match(emailID, "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2})*$").Success)
+            {
+                Console.WriteLine("Invalid emailID");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Valid emailID");
+                return true;
+            }
+        }
     }
 }
