@@ -11,71 +11,52 @@ namespace User_Registration
         /// <summary>
         /// Regex pattern for First Name
         /// </summary>
-        public readonly string namePattern = "^[A-Z][a-z]{2,}$";
+        public static string namePattern = "^[A-Z][a-z]{2,}$";
 
         /// <summary>
         /// Regex pattern for Email ID
         /// </summary>
-        public readonly string mailIDPattern = "^[0-9a-zA-Z]+([+_.-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{2,3}){1,2}$";
+        public static string mailIDPattern = "^[0-9a-zA-Z]+([+_.-][0-9a-zA-Z]+)*@[a-zA-Z0-9]+([.][a-zA-Z]{2,3}){1,2}$";
 
         /// <summary>
         /// Regex pattern for Mobile Number
         /// </summary>
-        public readonly string mobileNumberPattern = "^[1-9]{2}[ ][0-9]{10}";
+        public static string mobileNumberPattern = "^[1-9]{2}[ ][0-9]{10}";
 
         /// <summary>
         /// Regex pattern for Password
         /// </summary>
-        public readonly string passwordPattern = "(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*[0-9]{1,})(?=.*[@#$%+!]{1}).{8,}";
+        public static string passwordPattern = "(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*[0-9]{1,})(?=.*[@#$%+!]{1}).{8,}";
 
         /// <summary>
-        /// Validate First Name with Regex Pattern
+        /// Validate First Name with Lambda Expression
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <returns></returns>
-        public bool ValidateFirstName(string firstName)
-        {
-            return Regex.IsMatch(firstName, this.namePattern);
-        }
+        public Func<string, string> ValidateFirstName = x => Regex.IsMatch(x, namePattern) ? "Valid First Name" :
+           throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_FIRST_NAME, "Invalid First Name");
 
         /// <summary>
-        /// Validate Last Name with Regex Pattern
+        /// Validate Last Name with Lambda Expression
         /// </summary>
-        /// <param name="lastName"></param>
-        /// <returns></returns>
-        public bool ValidateLastName(string lastName)
-        {
-            return Regex.IsMatch(lastName, this.namePattern);
-        }
+        public Func<string, string> ValidateLastName = x => Regex.IsMatch(x, namePattern) ? "Valid Last Name" :
+           throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_LAST_NAME, "Invalid Last Name");
+
 
         /// <summary>
-        /// Validate Mail ID with Regex Pattern
+        /// Validate Email ID with Lambda Expression
         /// </summary>
-        /// <param name="mailID"></param>
-        /// <returns></returns>
-        public bool ValidateEmail(string mailID)
-        {
-            return Regex.IsMatch(mailID, this.mailIDPattern);
-        }
+        public Func<string, string> ValidateEmail = x => Regex.IsMatch(x, mailIDPattern) ? "Valid mailID" :
+           throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_EMAIL, "Invalid mailID");
 
         /// <summary>
-        /// Validate Mobile Number with Regex Pattern
+        /// Validate Mobile Number with Lambda Expression
         /// </summary>
-        /// <param name="mobileNumber"></param>
-        /// <returns></returns>
-        public bool ValidateMobileNumber(string mobileNumber)
-        {
-            return Regex.IsMatch(mobileNumber, this.mobileNumberPattern);
-        }
+        public Func<string, string> ValidateMobileNumber = x => Regex.IsMatch(x, mobileNumberPattern) ? "Valid mobileNumber" :
+           throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_EMAIL, "Invalid mobileNumber");
 
         /// <summary>
-        /// Validate Password with Regex Pattern
+        /// Validate Password with Lambda Expression
         /// </summary>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        public bool ValidatePassword(string password)
-        {
-            return Regex.IsMatch(password, this.passwordPattern);
-        }
+        public Func<string, string> ValidatePassword = x => Regex.IsMatch(x, passwordPattern) ? "Valid password" :
+           throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_EMAIL, "Invalid password");
     }
 }
