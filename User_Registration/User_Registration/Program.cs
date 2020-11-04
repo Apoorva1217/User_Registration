@@ -2,7 +2,7 @@
 
 namespace User_Registration
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// User Registration Program

@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,7 +34,23 @@ namespace User_Registration
         /// <returns></returns>
         public bool ValidateFirstName(string firstName)
         {
-            return Regex.IsMatch(firstName, this.namePattern);
+            try
+            {
+                if (Regex.IsMatch(firstName, this.namePattern))
+                {
+                    Console.WriteLine("Valid First Name");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid First Name");
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_FIRST_NAME, "Invalid First Name");
+            }
         }
 
         /// <summary>
@@ -45,7 +60,23 @@ namespace User_Registration
         /// <returns></returns>
         public bool ValidateLastName(string lastName)
         {
-            return Regex.IsMatch(lastName, this.namePattern);
+            try
+            {
+                if (Regex.IsMatch(lastName, this.namePattern))
+                {
+                    Console.WriteLine("Valid Last Name");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Last Name");
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_LAST_NAME, "Invalid Last Name");
+            }
         }
 
         /// <summary>
@@ -55,7 +86,23 @@ namespace User_Registration
         /// <returns></returns>
         public bool ValidateEmail(string mailID)
         {
-            return Regex.IsMatch(mailID, this.mailIDPattern);
+            try
+            {
+                if (Regex.IsMatch(mailID, this.mailIDPattern))
+                {
+                    Console.WriteLine("Valid mailID");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid mailID");
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_EMAIL, "Invalid mailID");
+            }
         }
 
         /// <summary>
@@ -65,7 +112,23 @@ namespace User_Registration
         /// <returns></returns>
         public bool ValidateMobileNumber(string mobileNumber)
         {
-            return Regex.IsMatch(mobileNumber, this.mobileNumberPattern);
+            try
+            {
+                if (Regex.IsMatch(mobileNumber, this.mobileNumberPattern))
+                {
+                    Console.WriteLine("Valid mobileNumber");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid mobileNumber");
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_MOBILE_NUMBER, "Invalid mobileNumber");
+            }
         }
 
         /// <summary>
@@ -75,7 +138,23 @@ namespace User_Registration
         /// <returns></returns>
         public bool ValidatePassword(string password)
         {
-            return Regex.IsMatch(password, this.passwordPattern);
+            try
+            {
+                if (Regex.IsMatch(password, this.passwordPattern))
+                {
+                    Console.WriteLine("Valid password");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid password");
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_PASSWORD, "Invalid password");
+            }
         }
     }
 }

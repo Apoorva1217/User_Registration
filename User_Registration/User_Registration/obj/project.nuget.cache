@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+Q45/XqWwzwh+wScx5YQu2aNFnACI4RxgXr3JQZrLKgiqMHyLtGqXzO/UMZoYHCgnr3SMv4S8YL/hHdkRanrDQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\HP\\source\\repos\\User_Registration\\User_Registration\\User_Registration.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512"
+  ],
+  "logs": []
+}

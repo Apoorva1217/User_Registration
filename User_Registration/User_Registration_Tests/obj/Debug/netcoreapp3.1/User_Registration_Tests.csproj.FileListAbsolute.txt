@@ -1,0 +1,4 @@
+C:\Users\HP\source\repos\User_Registration\User_Registration_Tests\bin\Debug\netcoreapp3.1\User_Registration.dll
+C:\Users\HP\source\repos\User_Registration\User_Registration_Tests\obj\Debug\netcoreapp3.1\User_Registration_Tests.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\User_Registration\User_Registration_Tests\obj\Debug\netcoreapp3.1\User_Registration_Tests.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\User_Registration\User_Registration_Tests\obj\Debug\netcoreapp3.1\User_Registration_Tests.AssemblyInfo.cs

@@ -1,16 +1,17 @@
-using Microsoft.AspNetCore.Rewrite.Internal;
+using Effort.Internal.TypeGeneration;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using System;
 using User_Registration;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace User_Registration_Test
+namespace User_Registration_Tests
 {
     [TestClass]
     public class Test
     {
-        private readonly User_Registration.Pattern patterns;
+        private readonly Pattern patterns;
 
         public Test()
         {
@@ -34,9 +35,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenFirstName_WhenStartsWithCapAndLessThanThreeChar_ShouldReturnTrue()
         {
-
-            bool result = patterns.ValidateFirstName("Ap");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateFirstName("Ap");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid First Name", e.Message);
+            }
         }
 
         /// <summary>
@@ -45,9 +51,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenFirstName_WhenNotStartsWithCapAndMinThreeChar_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateFirstName("appU");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateFirstName("appU");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid First Name", e.Message);
+            }
         }
 
         /// <summary>
@@ -56,9 +67,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenFirstName_WhenAllLettersAreCapitalAndMinThreeChar_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateFirstName("APPU");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateFirstName("APPU");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid First Name", e.Message);
+            }
         }
 
         /// <summary>
@@ -78,9 +94,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenlastName_WhenStartsWithCapAndLessThanThreeChar_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateLastName("Ra");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateLastName("Ra");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid Last Name", e.Message);
+            }
         }
 
         /// <summary>
@@ -89,9 +110,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenLastName_WhenNotStartsWithCapAndMinThreeChar_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateLastName("raSal");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateLastName("raSal");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid Last Name", e.Message);
+            }
         }
 
         /// <summary>
@@ -100,9 +126,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenLastName_WhenAllLettersAreCapitalAndMinThreeChar_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateLastName("RASAL");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateLastName("RASAL");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid Last Name", e.Message);
+            }
         }
 
         /// <summary>
@@ -122,9 +153,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenEmailId_WhenIsNotProper_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateEmail("appu@gmail");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateEmail("appu@gmail");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid mailID", e.Message);
+            }
         }
 
         /// <summary>
@@ -144,9 +180,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenMobileNumber_WhenLessThanTenDigits_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateMobileNumber("89 2435462");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateMobileNumber("89 2435462");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid mobileNumber", e.Message);
+            }
         }
 
         /// <summary>
@@ -155,9 +196,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenMobileNumber_WhenNoSpaceAfterCountryCode_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidateMobileNumber("917654378967");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateMobileNumber("917654378967");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid mobileNumber", e.Message);
+            }
         }
 
         /// <summary>
@@ -177,9 +223,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenPassword_WhenLessThanEightChracters_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidatePassword("ste5SD");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidatePassword("ste5SD");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid password", e.Message);
+            }
         }
 
         /// <summary>
@@ -188,9 +239,14 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenPassword_WhenNotContainUpperCaseChar_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidatePassword("234%56");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidatePassword("234%56");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid password", e.Message);
+            }
         }
 
         /// <summary>
@@ -199,15 +255,16 @@ namespace User_Registration_Test
         [TestMethod]
         public void GivenPassword_WhenNotContainNumericNumber_ShouldReturnFalse()
         {
-
-            bool result = patterns.ValidatePassword("ase!df");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidatePassword("ase!df");
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid password", e.Message);
+            }
         }
 
-        /// <summary>
-        /// Test Method to validate sample emails
-        /// </summary>
-        /// <param name="email"></param>
         [TestMethod]
         [DataRow("abc@yahoo.com")]
         [DataRow("abc-100@yahoo.com")]
@@ -224,10 +281,6 @@ namespace User_Registration_Test
             Assert.IsTrue(result);
         }
 
-        /// <summary>
-        /// Test Method to validate sample emails
-        /// </summary>
-        /// <param name="email"></param>
         [TestMethod]
         [DataRow("abc")]
         [DataRow("abc123@gmail.a")]
@@ -243,9 +296,14 @@ namespace User_Registration_Test
         [DataRow("abc@gmail.com.aa.au")]
         public void GivenEmails_WhenChecked_ShouldReturnFalse(string email)
         {
-            bool result = patterns.ValidateEmail(email);
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = patterns.ValidateEmail(email);
+            }
+            catch (UserRegistrationException e)
+            {
+                Assert.AreEqual("Invalid mailID", e.Message);
+            }
         }
-
     }
 }
