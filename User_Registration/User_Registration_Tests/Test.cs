@@ -205,33 +205,47 @@ namespace User_Registration_Test
         }
 
         /// <summary>
-        /// Test Method to validate given emails
+        /// Test Method to validate sample emails
         /// </summary>
+        /// <param name="email"></param>
         [TestMethod]
-        public void GivenEmails_WhenChecked_ShouldReturnExpectedResult()
+        [DataRow("abc@yahoo.com")]
+        [DataRow("abc-100@yahoo.com")]
+        [DataRow("abc.100@yahoo.com")]
+        [DataRow("abc111@abc.com")]
+        [DataRow("abc-100@abc.net")]
+        [DataRow("abc.100@abc.com.au")]
+        [DataRow("abc@1.com")]
+        [DataRow("abc@gmail.com.com")]
+        [DataRow("abc+100@gmail.com")]
+        public void GivenEmails_WhenChecked_ShouldReturnTrue(string email)
         {
-            User_Registration.Pattern patterns = new User_Registration.Pattern();
-            Assert.IsTrue(patterns.ValidateEmail("abc@yahoo.com"));
-            Assert.IsTrue(patterns.ValidateEmail("abc-100@yahoo.com"));
-            Assert.IsTrue(patterns.ValidateEmail("abc.100@yahoo.com"));
-            Assert.IsTrue(patterns.ValidateEmail("abc111@abc.com"));
-            Assert.IsTrue(patterns.ValidateEmail("abc-100@abc.net"));
-            Assert.IsTrue(patterns.ValidateEmail("abc.100@abc.com.au"));
-            Assert.IsTrue(patterns.ValidateEmail("abc@1.com"));
-            Assert.IsTrue(patterns.ValidateEmail("abc@gmail.com.com"));
-            Assert.IsTrue(patterns.ValidateEmail("abc+100@gmail.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc"));
-            Assert.IsFalse(patterns.ValidateEmail("abc123@gmail.a"));
-            Assert.IsFalse(patterns.ValidateEmail("abc123@.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc123@.com.com"));
-            Assert.IsFalse(patterns.ValidateEmail(".abc@abc.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc()*@gmail.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc@%*.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc..2002@gmail.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc.@gmail.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc@abc@gmail.com"));
-            Assert.IsFalse(patterns.ValidateEmail("abc@gmail.com.2a"));
-            Assert.IsFalse(patterns.ValidateEmail("abc@gmail.com.aa.au"));
+            bool result = patterns.ValidateEmail(email);
+            Assert.IsTrue(result);
         }
+
+        /// <summary>
+        /// Test Method to validate sample emails
+        /// </summary>
+        /// <param name="email"></param>
+        [TestMethod]
+        [DataRow("abc")]
+        [DataRow("abc123@gmail.a")]
+        [DataRow("abc123@.com")]
+        [DataRow("abc123@.com.com")]
+        [DataRow(".abc@abc.com")]
+        [DataRow("abc()*@gmail.com")]
+        [DataRow("abc@%*.com")]
+        [DataRow("abc..2002@gmail.com")]
+        [DataRow("abc.@gmail.com")]
+        [DataRow("abc@abc@gmail.com")]
+        [DataRow("abc@gmail.com.2a")]
+        [DataRow("abc@gmail.com.aa.au")]
+        public void GivenEmails_WhenChecked_ShouldReturnFalse(string email)
+        {
+            bool result = patterns.ValidateEmail(email);
+            Assert.IsFalse(result);
+        }
+
     }
 }
