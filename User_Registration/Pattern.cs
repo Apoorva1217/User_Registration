@@ -71,7 +71,7 @@ namespace User_Registration
         /// <returns></returns>
         public bool ValidateMobileNumber(string mobileNumber)
         {
-            if (!Regex.Match(mobileNumber, "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2})*$").Success)
+            if (!Regex.Match(mobileNumber, "^[0-9]{2} [0-9]{10}").Success)
             {
                 Console.WriteLine("Invalid mobileNumber");
                 return false;
@@ -79,6 +79,26 @@ namespace User_Registration
             else
             {
                 Console.WriteLine("Valid mobileNumber");
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Validate Password
+        /// Rule 1-> minimum 8 characters
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool ValidatePassword(string password)
+        {
+            if (!Regex.Match(password, "^[A-Za-z0-9]{8,}$").Success)
+            {
+                Console.WriteLine("Invalid password");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Valid password");
                 return true;
             }
         }
