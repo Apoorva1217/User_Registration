@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -101,6 +102,35 @@ namespace User_Registration
                 Console.WriteLine("Valid password");
                 return true;
             }
+        }
+
+        /// <summary>
+        /// Validate Given Email samples
+        /// </summary>
+        public void GivenEmails_WhenChecked_ShouldReturnExpectedResult()
+        {
+            
+            Assert.IsTrue(ValidateemailID("abc@yahoo.com"));
+            Assert.IsTrue(ValidateemailID("abc-100@yahoo.com"));
+            Assert.IsTrue(ValidateemailID("abc.100@yahoo.com"));
+            Assert.IsTrue(ValidateemailID("abc111@abc.com"));
+            Assert.IsTrue(ValidateemailID("abc-100@abc.net"));
+            Assert.IsTrue(ValidateemailID("abc.100@abc.com.au"));
+            Assert.IsTrue(ValidateemailID("abc@1.com"));
+            Assert.IsTrue(ValidateemailID("abc@gmail.com.com"));
+            Assert.IsTrue(ValidateemailID("abc+100@gmail.com"));
+            Assert.IsFalse(ValidateemailID("abc"));
+            Assert.IsFalse(ValidateemailID("abc123@gmail.a"));
+            Assert.IsFalse(ValidateemailID("abc123@.com"));
+            Assert.IsFalse(ValidateemailID("abc123@.com.com"));
+            Assert.IsFalse(ValidateemailID(".abc@abc.com"));
+            Assert.IsFalse(ValidateemailID("abc()*@gmail.com"));
+            Assert.IsFalse(ValidateemailID("abc@%*.com"));
+            Assert.IsFalse(ValidateemailID("abc..2002@gmail.com"));
+            Assert.IsFalse(ValidateemailID("abc.@gmail.com"));
+            Assert.IsFalse(ValidateemailID("abc@abc@gmail.com"));
+            Assert.IsFalse(ValidateemailID("abc@gmail.com.2a"));
+            Assert.IsFalse(ValidateemailID("abc@gmail.com.aa.au"));
         }
     }
 }
