@@ -85,13 +85,13 @@ namespace User_Registration
 
         /// <summary>
         /// Validate Password
-        /// Rule 1-> minimum 8 characters
+        /// Rule 2-> should have atleast one upper case
         /// </summary>
         /// <param name="password"></param>
         /// <returns></returns>
         public bool ValidatePassword(string password)
         {
-            if (!Regex.Match(password, "^[A-Za-z0-9]{8,}$").Success)
+            if (!Regex.Match(password, "^(?=.*[A-Z].*)[A-Za-z0-9]{8,}").Success)
             {
                 Console.WriteLine("Invalid password");
                 return false;
