@@ -63,5 +63,24 @@ namespace User_Registration
                 return true;
             }
         }
+
+        /// <summary>
+        /// Validate Mobile Number
+        /// </summary>
+        /// <param name="mobileNumber"></param>
+        /// <returns></returns>
+        public bool ValidateMobileNumber(string mobileNumber)
+        {
+            if (!Regex.Match(mobileNumber, "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2})*$").Success)
+            {
+                Console.WriteLine("Invalid mobileNumber");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Valid mobileNumber");
+                return true;
+            }
+        }
     }
 }
